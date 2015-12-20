@@ -13,7 +13,10 @@
 		361B5AF91C26E7D200156F19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361B5AF71C26E7D200156F19 /* Main.storyboard */; };
 		361B5AFB1C26E7D200156F19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 361B5AFA1C26E7D200156F19 /* Assets.xcassets */; };
 		361B5AFE1C26E7D200156F19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361B5AFC1C26E7D200156F19 /* LaunchScreen.storyboard */; };
-		361B5B091C26E7D200156F19 /* ContactsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B081C26E7D200156F19 /* ContactsTests.m */; };
+		361B5B1B1C26ED0A00156F19 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B1A1C26ED0A00156F19 /* Contact.m */; };
+		361B5B1E1C26ED3500156F19 /* ContactsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B1D1C26ED3500156F19 /* ContactsStorage.m */; };
+		361B5B211C26F3F900156F19 /* ContactRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B201C26F3F900156F19 /* ContactRepresentation.m */; };
+		361B5B291C26FCE800156F19 /* ContactsStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B281C26FCE800156F19 /* ContactsStorageTests.m */; };
 		DF6EB3C43C67104AD4235AAA /* libPods-Contacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28235B116F2FB2528FE6012C /* libPods-Contacts.a */; };
 /* End PBXBuildFile section */
 
@@ -40,8 +43,14 @@
 		361B5AFD1C26E7D200156F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		361B5AFF1C26E7D200156F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		361B5B041C26E7D200156F19 /* ContactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		361B5B081C26E7D200156F19 /* ContactsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactsTests.m; sourceTree = "<group>"; };
 		361B5B0A1C26E7D200156F19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		361B5B191C26ED0A00156F19 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		361B5B1A1C26ED0A00156F19 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		361B5B1C1C26ED3500156F19 /* ContactsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsStorage.h; sourceTree = "<group>"; };
+		361B5B1D1C26ED3500156F19 /* ContactsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsStorage.m; sourceTree = "<group>"; };
+		361B5B1F1C26F3F900156F19 /* ContactRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactRepresentation.h; sourceTree = "<group>"; };
+		361B5B201C26F3F900156F19 /* ContactRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactRepresentation.m; sourceTree = "<group>"; };
+		361B5B281C26FCE800156F19 /* ContactsStorageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsStorageTests.m; sourceTree = "<group>"; };
 		AE21E01905DE70497A58201C /* Pods-Contacts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.release.xcconfig"; sourceTree = "<group>"; };
 		CD9261EB9EFBBA4811CDC625 /* Pods-Contacts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +107,9 @@
 			children = (
 				361B5AF11C26E7D200156F19 /* AppDelegate.h */,
 				361B5AF21C26E7D200156F19 /* AppDelegate.m */,
+				361B5B181C26EC8300156F19 /* Entities */,
+				361B5B131C26E97000156F19 /* Model */,
+				361B5B141C26E99200156F19 /* Scenes */,
 				361B5AF41C26E7D200156F19 /* ViewController.h */,
 				361B5AF51C26E7D200156F19 /* ViewController.m */,
 				361B5AF71C26E7D200156F19 /* Main.storyboard */,
@@ -120,10 +132,37 @@
 		361B5B071C26E7D200156F19 /* ContactsTests */ = {
 			isa = PBXGroup;
 			children = (
-				361B5B081C26E7D200156F19 /* ContactsTests.m */,
+				361B5B281C26FCE800156F19 /* ContactsStorageTests.m */,
 				361B5B0A1C26E7D200156F19 /* Info.plist */,
 			);
 			path = ContactsTests;
+			sourceTree = "<group>";
+		};
+		361B5B131C26E97000156F19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				361B5B1C1C26ED3500156F19 /* ContactsStorage.h */,
+				361B5B1D1C26ED3500156F19 /* ContactsStorage.m */,
+				361B5B1F1C26F3F900156F19 /* ContactRepresentation.h */,
+				361B5B201C26F3F900156F19 /* ContactRepresentation.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		361B5B141C26E99200156F19 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		361B5B181C26EC8300156F19 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				361B5B191C26ED0A00156F19 /* Contact.h */,
+				361B5B1A1C26ED0A00156F19 /* Contact.m */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		E225E3D544DD72A6DBCC137D /* Pods */ = {
@@ -288,6 +327,9 @@
 			files = (
 				361B5AF61C26E7D200156F19 /* ViewController.m in Sources */,
 				361B5AF31C26E7D200156F19 /* AppDelegate.m in Sources */,
+				361B5B1B1C26ED0A00156F19 /* Contact.m in Sources */,
+				361B5B211C26F3F900156F19 /* ContactRepresentation.m in Sources */,
+				361B5B1E1C26ED3500156F19 /* ContactsStorage.m in Sources */,
 				361B5AF01C26E7D200156F19 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				361B5B091C26E7D200156F19 /* ContactsTests.m in Sources */,
+				361B5B291C26FCE800156F19 /* ContactsStorageTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
