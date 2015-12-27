@@ -191,7 +191,7 @@
 			children = (
 				361B5B311C27133200156F19 /* Pop-up Transitions */,
 			);
-			name = Transitions;
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 		361B5B311C27133200156F19 /* Pop-up Transitions */ = {
