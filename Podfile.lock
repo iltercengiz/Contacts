@@ -14,14 +14,24 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - CocoaLumberjack (2.2.0):
+    - CocoaLumberjack/Default (= 2.2.0)
+    - CocoaLumberjack/Extensions (= 2.2.0)
+  - CocoaLumberjack/Core (2.2.0)
+  - CocoaLumberjack/Default (2.2.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.2.0):
+    - CocoaLumberjack/Default
   - libPhoneNumber-iOS (0.8.10)
 
 DEPENDENCIES:
   - BlocksKit
+  - CocoaLumberjack
   - libPhoneNumber-iOS
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   libPhoneNumber-iOS: 7bfd00f843fdcd82b5182b463e8eb3b27579f41d
 
 COCOAPODS: 0.39.0
