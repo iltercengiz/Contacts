@@ -11,12 +11,18 @@
 
 @interface ContactRepresentationTests : XCTestCase
 
+@property (nonatomic) ContactRepresentation *representation;
+
 @end
 
 @implementation ContactRepresentationTests
 
 - (void)setUp {
     [super setUp];
+    self.representation = [ContactRepresentation new];
+    self.representation.firstName = @"Ilter";
+    self.representation.lastName = @"Cengiz";
+    self.representation.phoneNumber = @"+90 532 217 3890";
 }
 
 - (void)tearDown {
@@ -34,6 +40,14 @@
     XCTAssertFalse([representation isValid], @"Validation should not pass!");
     representation.phoneNumber = @"+90 532 217 3890";
     XCTAssertTrue([representation isValid], @"Validation should pass!");
+}
+
+- (void)testFullName {
+    XCTAssertEqualObjects(self.representation.fullName, @"Ilter Cengiz", @"Failed to concat first and last name!");
+}
+
+- (void)testFormattedPhoneNumber {
+    XCTAssertEqualObjects(self.representation.formattedPhoneNumber, @"+905322173890", @"Failed to format phone number!");
 }
 
 @end
