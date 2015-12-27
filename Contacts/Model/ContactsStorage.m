@@ -59,7 +59,7 @@
     NSError *error = nil;
     NBPhoneNumber *phoneNumber = [util parse:contactRepresentation.phoneNumber defaultRegion:[NSLocale currentLocale].localeIdentifier error:&error];
     if (!error) {
-        NSString *phoneNumberString = [util format:phoneNumber numberFormat:NBEPhoneNumberFormatINTERNATIONAL error:&error];
+        NSString *phoneNumberString = [util format:phoneNumber numberFormat:NBEPhoneNumberFormatE164 error:&error];
         if (!error) {
             Contact *contact = [Contact new];
             contact.identifier = [NSUUID UUID].UUIDString;
@@ -88,6 +88,25 @@
     [self.mutableContacts removeObject:contact];
     
     return contactRepresentation;
+}
+
+- (BOOL)hasContactWithPhoneNumber:(NSString *)phoneNumberString {
+    __block BOOL hasContact = NO;
+    NBPhoneNumberUtil *util = [NBPhoneNumberUtil new];
+    NSError *error = nil;
+    NBPhoneNumber *phoneNumber = [util parse:phoneNumberString defaultRegion:[NSLocale currentLocale].localeIdentifier error:&error];
+    if (!error) {
+        phoneNumberString = [util format:phoneNumber numberFormat:NBEPhoneNumberFormatE164 error:&error];
+        if (!error) {
+            [self.mutableContacts enumerateObjectsUsingBlock:^(Contact *contact, NSUInteger index, BOOL *stop) {
+                if ([contact.phoneNumber isEqualToString:phoneNumberString]) {
+                    *stop = YES;
+                    hasContact = YES;
+                }
+            }];
+        }
+    }
+    return hasContact;
 }
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "AddContactViewController.h"
-#import "ContactRepresentation.h"
+#import "ContactsStorage.h"
 #import <libPhoneNumber-iOS/NBAsYouTypeFormatter.h>
 #import <libPhoneNumber-iOS/NBPhoneNumberUtil.h>
 
@@ -49,10 +49,29 @@
 #pragma mark - IBAction
 
 - (IBAction)didTapSaveBarButton:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(addContactViewController:didAddContact:)]) {
-        [self.delegate addContactViewController:self didAddContact:self.contactRepresentation];
+    void (^addContactBlock)() = ^{
+        if ([self.delegate respondsToSelector:@selector(addContactViewController:didAddContact:)]) {
+            [self.delegate addContactViewController:self didAddContact:self.contactRepresentation];
+        }
+        [self performSegueWithIdentifier:@"UnwindAddContactSegue" sender:sender];
+    };
+    if ([[ContactsStorage sharedInstance] hasContactWithPhoneNumber:self.contactRepresentation.phoneNumber]) {
+        NSString *title = NSLocalizedString(@"Confirm new contact", @"Shown when a new contact with a phone number that's already in list is tried to be added");
+        NSString *message = [NSString stringWithFormat:@"%@\n\n%@\n\n%@",
+                             NSLocalizedString(@"A contact with the following phone number is already present.", @"Shown when a new contact with a phone number that's already in list is tried to be added"),
+                             self.contactRepresentation.phoneNumber,
+                             NSLocalizedString(@"Would you like to add again?", @"Shown when a new contact with a phone number that's already in list is tried to be added")];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"App wide 'Cancel' button") style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancelAction];
+        UIAlertAction *continueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Add", @"Used in confirmation alert on Add Contact scene") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            addContactBlock();
+        }];
+        [alert addAction:continueAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        addContactBlock();
     }
-    [self performSegueWithIdentifier:@"UnwindAddContactSegue" sender:sender];
 }
 
 - (IBAction)didChangeEditing:(id)sender {

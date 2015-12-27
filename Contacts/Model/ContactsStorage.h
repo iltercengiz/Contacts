@@ -16,5 +16,6 @@
 + (instancetype)sharedInstance;
 - (ContactRepresentation *)addContact:(ContactRepresentation *)contactRepresentation;
 - (ContactRepresentation *)removeContact:(ContactRepresentation *)contactRepresentation;
+- (BOOL)hasContactWithPhoneNumber:(NSString *)phoneNumberString;
 
 @end
