@@ -22,6 +22,7 @@
 		361B5B391C27133200156F19 /* PopupPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B351C27133200156F19 /* PopupPresentationController.m */; };
 		361B5B3A1C27133200156F19 /* PopupTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B371C27133200156F19 /* PopupTransitioningDelegate.m */; };
 		36E400A21C3027A4008C97FA /* ContactsStyleKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E400A11C3027A4008C97FA /* ContactsStyleKit.m */; };
+		36E400A41C302ADB008C97FA /* ContactRepresentationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E400A31C302ADB008C97FA /* ContactRepresentationTests.m */; };
 		DF6EB3C43C67104AD4235AAA /* libPods-Contacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28235B116F2FB2528FE6012C /* libPods-Contacts.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		36E4009A1C300D37008C97FA /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		36E400A01C3027A4008C97FA /* ContactsStyleKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsStyleKit.h; sourceTree = "<group>"; };
 		36E400A11C3027A4008C97FA /* ContactsStyleKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsStyleKit.m; sourceTree = "<group>"; };
+		36E400A31C302ADB008C97FA /* ContactRepresentationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactRepresentationTests.m; sourceTree = "<group>"; };
 		AE21E01905DE70497A58201C /* Pods-Contacts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.release.xcconfig"; sourceTree = "<group>"; };
 		CD9261EB9EFBBA4811CDC625 /* Pods-Contacts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				361B5B281C26FCE800156F19 /* ContactsStorageTests.m */,
+				36E400A31C302ADB008C97FA /* ContactRepresentationTests.m */,
 				361B5B0A1C26E7D200156F19 /* Info.plist */,
 			);
 			path = ContactsTests;
@@ -395,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				361B5B291C26FCE800156F19 /* ContactsStorageTests.m in Sources */,
+				36E400A41C302ADB008C97FA /* ContactRepresentationTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,6 +46,11 @@
     XCTAssertEqual([ContactsStorage sharedInstance].contacts.count, self.currentContactsCount, @"Invalid contact has been added!");
 }
 
+- (void)testHasContact {
+    ContactRepresentation *representation = (ContactRepresentation *)[ContactsStorage sharedInstance].contacts.firstObject;
+    XCTAssertTrue([[ContactsStorage sharedInstance] hasContactWithPhoneNumber:representation.phoneNumber], @"Failed to find contact!");
+}
+
 - (void)testRemoveContact {
     NSArray *contacts = [ContactsStorage sharedInstance].contacts;
     ContactRepresentation *representation = (ContactRepresentation *)contacts.firstObject;
