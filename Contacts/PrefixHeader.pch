@@ -14,5 +14,6 @@
 
 #import <CocoaLumberjack/CocoaLumberjack.h>
 static DDLogLevel const ddLogLevel = DDLogLevelVerbose;
+#import "ContactsStyleKit.h"
 
 #endif /* PrefixHeader_pch */

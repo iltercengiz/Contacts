@@ -17,6 +17,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UINavigationBar appearance] setBackgroundImage:[ContactsStyleKit imageOfNavigationBarBackground] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:17.0],
+                                                           NSForegroundColorAttributeName: [ContactsStyleKit contactsWhiteColor]}];
+    [[UINavigationBar appearance] setTintColor:[ContactsStyleKit contactsWhiteColor]];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Avenir" size:17.0],
+                                                           NSForegroundColorAttributeName: [ContactsStyleKit contactsWhiteColor]}
+                                                forState:UIControlStateNormal];
+    
     return YES;
 }
 
