@@ -30,11 +30,19 @@
         return nil;
     }
     if (contact) {
-        self.contact = contact;
-        self.identifier = contact.identifier;
-        self.firstName = contact.firstName;
-        self.lastName = contact.lastName;
-        self.phoneNumber = contact.phoneNumber;
+        NBPhoneNumberUtil *util = [NBPhoneNumberUtil new];
+        NSError *error = nil;
+        NBPhoneNumber *phoneNumber = [util parse:contact.phoneNumber defaultRegion:[NSLocale currentLocale].localeIdentifier error:&error];
+        if (!error) {
+            NSString *phoneNumberString = [util format:phoneNumber numberFormat:NBEPhoneNumberFormatINTERNATIONAL error:&error];
+            if (!error) {
+                self.phoneNumber = phoneNumberString;
+                self.firstName = contact.firstName;
+                self.lastName = contact.lastName;
+                self.identifier = contact.identifier;
+                self.contact = contact;
+            }
+        }
     }
     return self;
 }

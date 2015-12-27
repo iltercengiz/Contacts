@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.contactRepresentation = [ContactRepresentation new];
+    self.util = [NBPhoneNumberUtil new];
+    self.formatter = [[NBAsYouTypeFormatter alloc] initWithRegionCode:[NSLocale currentLocale].localeIdentifier];
 }
 
 #pragma mark - Navigation
@@ -60,7 +62,7 @@
     } else if (sender == self.lastNameTextField) {
         self.contactRepresentation.lastName = self.lastNameTextField.text;
     } else if (sender == self.phoneNumberTextField) {
-        self.contactRepresentation.phoneNumber = [self.util format:self.phoneNumber numberFormat:NBEPhoneNumberFormatE164 error:nil];
+        self.contactRepresentation.phoneNumber = [self.util format:self.phoneNumber numberFormat:NBEPhoneNumberFormatINTERNATIONAL error:nil];
     }
     [self updateSaveBarButtonStateIfNeeded];
 }
@@ -75,30 +77,10 @@
     }
 }
 
-#pragma mark - Getter
-
-- (NBPhoneNumberUtil *)util {
-    if (!_util) {
-        _util = [NBPhoneNumberUtil new];
-    }
-    return _util;
-}
-
-- (NBAsYouTypeFormatter *)formatter {
-    if (!_formatter) {
-        _formatter = [[NBAsYouTypeFormatter alloc] initWithRegionCode:[NSLocale currentLocale].localeIdentifier];
-    }
-    return _formatter;
-}
-
 #pragma mark - Private methods
 
 - (void)updateSaveBarButtonStateIfNeeded {
-    BOOL shouldEnable = YES;
-    shouldEnable &= (self.firstNameTextField.text.length > 0);
-    shouldEnable &= (self.lastNameTextField.text.length > 0);
-    shouldEnable &= (self.phoneNumberTextField.text.length > 0);
-    shouldEnable &= [self.util isValidNumber:self.phoneNumber];
+    BOOL shouldEnable = [self.contactRepresentation isValid];
     self.saveBarButtonItem.enabled = shouldEnable;
 }
 

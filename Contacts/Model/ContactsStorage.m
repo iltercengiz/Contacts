@@ -9,6 +9,7 @@
 #import "ContactsStorage.h"
 #import "Contact.h"
 #import <BlocksKit/NSArray+BlocksKit.h>
+#import <libPhoneNumber-iOS/NBPhoneNumberUtil.h>
 
 @interface ContactsStorage ()
 
@@ -54,16 +55,26 @@
         return nil;
     }
     
-    Contact *contact = [Contact new];
-    contact.identifier = [NSUUID UUID].UUIDString;
-    contact.firstName = contactRepresentation.firstName;
-    contact.lastName = contactRepresentation.lastName;
-    contact.phoneNumber = contactRepresentation.phoneNumber;
-    contact.createdDate = [NSDate date];
-    [self.mutableContacts addObject:contact];
+    NBPhoneNumberUtil *util = [NBPhoneNumberUtil new];
+    NSError *error = nil;
+    NBPhoneNumber *phoneNumber = [util parse:contactRepresentation.phoneNumber defaultRegion:[NSLocale currentLocale].localeIdentifier error:&error];
+    if (!error) {
+        NSString *phoneNumberString = [util format:phoneNumber numberFormat:NBEPhoneNumberFormatINTERNATIONAL error:&error];
+        if (!error) {
+            Contact *contact = [Contact new];
+            contact.identifier = [NSUUID UUID].UUIDString;
+            contact.firstName = contactRepresentation.firstName;
+            contact.lastName = contactRepresentation.lastName;
+            contact.phoneNumber = phoneNumberString;
+            contact.createdDate = [NSDate date];
+            [self.mutableContacts addObject:contact];
+            
+            contactRepresentation.identifier = contact.identifier;
+            return contactRepresentation;
+        }
+    }
     
-    contactRepresentation.identifier = contact.identifier;
-    return contactRepresentation;
+    return nil;
 }
 
 - (ContactRepresentation *)removeContact:(ContactRepresentation *)contactRepresentation {

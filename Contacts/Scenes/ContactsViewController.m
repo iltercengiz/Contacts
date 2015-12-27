@@ -28,6 +28,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+#ifdef DEBUG
+    /***** TESTING *****/
+    BOOL hasInitialData = /* NO // */ YES;
+    if (hasInitialData) {
+        // Add initial contacts for demonstration
+        NSArray *firstNames = @[@"John", @"Eliot", @"Steve", @"Joe", @"Emily", @"Amy", @"Marcus", @"Marc"];
+        NSArray *lastNames = @[@"Roberto", @"Sophia", @"Antje", @"Tomislava", @"Eliana", @"Christine", @"Roscoe", @"Ovidio"];
+        NSArray *phoneNumbers = @[@"+1-202-555-0114", @"+1-202-555-0118", @"+1-202-555-0180", @"+44 7700 900354", @"+44 7700 900286", @"+1-613-555-0178", @"+1-613-555-0139", @"+61 1900 654 321"];
+        [phoneNumbers enumerateObjectsUsingBlock:^(NSString *phoneNumber, NSUInteger index, BOOL *stop) {
+            ContactRepresentation *representation = [ContactRepresentation new];
+            representation.phoneNumber = phoneNumber;
+            representation.firstName = firstNames[(arc4random() % phoneNumbers.count)];
+            representation.lastName = lastNames[(arc4random() % phoneNumbers.count)];
+            [[ContactsStorage sharedInstance] addContact:representation];
+        }];
+    }
+    /***** TESTING *****/
+#endif
+    
     [self refreshContacts];
 }
 
@@ -35,9 +55,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"AddContactSegue"]) {
-        AddContactViewController *addContactViewController = (AddContactViewController *)segue.destinationViewController;
-        addContactViewController.modalPresentationStyle = UIModalPresentationCustom;
-        addContactViewController.transitioningDelegate = self.transitioningDelegate;
+        UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
+        navigationController.modalPresentationStyle = UIModalPresentationCustom;
+        navigationController.transitioningDelegate = self.transitioningDelegate;
+        AddContactViewController *addContactViewController = (AddContactViewController *)navigationController.topViewController;
+        addContactViewController.delegate = self;
     }
 }
 
@@ -63,12 +85,16 @@
     BOOL hidesContactsCount = (numberOfContacts == 0);
     self.contactsCountLabel.hidden = hidesContactsCount;
     self.tableView.backgroundView = hidesContactsCount ? self.emptyStateView : nil;
+    [self.tableView reloadData];
 }
 
 #pragma mark - AddContactDelegate
 
 - (void)addContactViewController:(AddContactViewController *)addContactViewController didAddContact:(ContactRepresentation *)contactRepresentation {
-    
+    contactRepresentation = [[ContactsStorage sharedInstance] addContact:contactRepresentation];
+    if (contactRepresentation) {
+        [self refreshContacts];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -86,5 +112,9 @@
 }
 
 #pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 @end
