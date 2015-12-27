@@ -80,12 +80,22 @@
 
 - (void)refreshContacts {
     self.contacts = [ContactsStorage sharedInstance].contacts;
+    [self updateContactCount];
+    [self updateEmptyStateVisibility];
+    [self.tableView reloadData];
+}
+
+- (void)updateContactCount {
     NSInteger numberOfContacts = self.contacts.count;
     self.contactsCountLabel.text = [NSString stringWithFormat:@"%li %@", numberOfContacts, NSLocalizedString(@"contacts", @"")];
     BOOL hidesContactsCount = (numberOfContacts == 0);
     self.contactsCountLabel.hidden = hidesContactsCount;
-    self.tableView.backgroundView = hidesContactsCount ? self.emptyStateView : nil;
-    [self.tableView reloadData];
+}
+
+- (void)updateEmptyStateVisibility {
+    NSInteger numberOfContacts = self.contacts.count;
+    BOOL shouldShowEmptyStateView = (numberOfContacts == 0);
+    self.tableView.backgroundView = shouldShowEmptyStateView ? self.emptyStateView : nil;
 }
 
 #pragma mark - AddContactDelegate
@@ -111,10 +121,29 @@
     return self.contacts.count;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ContactRepresentation *representation = self.contacts[indexPath.row];
+        [[ContactsStorage sharedInstance] removeContact:representation];
+        self.contacts = [ContactsStorage sharedInstance].contacts;
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [self updateContactCount];
+        [self updateEmptyStateVisibility];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
 }
 
 @end
