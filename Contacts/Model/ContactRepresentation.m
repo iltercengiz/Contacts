@@ -18,7 +18,7 @@
 
 @implementation ContactRepresentation
 
-@dynamic fullName;
+@dynamic fullName, formattedPhoneNumber;
 
 - (instancetype)init {
     return [self initWithContact:nil];
@@ -62,8 +62,23 @@
     return [util isValidNumber:phoneNumber];
 }
 
+#pragma mark - Getter
+
 - (NSString *)fullName {
     return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
+
+- (NSString *)formattedPhoneNumber {
+    NBPhoneNumberUtil *util = [NBPhoneNumberUtil new];
+    NSError *error = nil;
+    NBPhoneNumber *phoneNumber = [util parse:self.phoneNumber defaultRegion:[NSLocale currentLocale].localeIdentifier error:&error];
+    if (!error) {
+        NSString *phoneNumberString = [util format:phoneNumber numberFormat:NBEPhoneNumberFormatE164 error:&error];
+        if (!error) {
+            return phoneNumberString;
+        }
+    }
+    return nil;
 }
 
 @end

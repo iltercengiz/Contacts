@@ -17,6 +17,7 @@
 @property (nonatomic) NSString *lastName;
 @property (nonatomic) NSString *phoneNumber;
 @property (nonatomic, readonly) NSString *fullName;
+@property (nonatomic, readonly) NSString *formattedPhoneNumber; // Used for call function
 
 - (instancetype)initWithContact:(Contact *)contact NS_DESIGNATED_INITIALIZER;
 - (BOOL)isValid;

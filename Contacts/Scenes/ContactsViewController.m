@@ -139,6 +139,28 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIApplication *application = [UIApplication sharedApplication];
+    ContactRepresentation *representation = self.contacts[indexPath.row];
+    NSURL *phoneNumberURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", representation.formattedPhoneNumber]];
+    if ([application canOpenURL:phoneNumberURL]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Confirm calling", @"Shown just before calling for confirmation")
+                                                                       message:representation.phoneNumber
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"App wide 'Cancel' button") style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancelAction];
+        UIAlertAction *continueAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Continue", @"App wide 'Continue' button") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [application openURL:phoneNumberURL];
+        }];
+        [alert addAction:continueAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Call error", @"Shown when calling is not possible")
+                                                                       message:NSLocalizedString(@"This device doesn't support phone functionality.", @"Shown when calling is not possible")
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", @"App wide 'Dismiss' button") style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:dismissAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
