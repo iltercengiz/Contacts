@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  ContactsViewController.h
 //  Contacts
 //
 //  Created by Ilter Cengiz on 20/12/2015.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface ContactsViewController : UIViewController
 
 @end
-

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		361B5AF01C26E7D200156F19 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5AEF1C26E7D200156F19 /* main.m */; };
 		361B5AF31C26E7D200156F19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5AF21C26E7D200156F19 /* AppDelegate.m */; };
-		361B5AF61C26E7D200156F19 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5AF51C26E7D200156F19 /* ViewController.m */; };
 		361B5AF91C26E7D200156F19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361B5AF71C26E7D200156F19 /* Main.storyboard */; };
 		361B5AFB1C26E7D200156F19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 361B5AFA1C26E7D200156F19 /* Assets.xcassets */; };
 		361B5AFE1C26E7D200156F19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361B5AFC1C26E7D200156F19 /* LaunchScreen.storyboard */; };
@@ -17,6 +16,11 @@
 		361B5B1E1C26ED3500156F19 /* ContactsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B1D1C26ED3500156F19 /* ContactsStorage.m */; };
 		361B5B211C26F3F900156F19 /* ContactRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B201C26F3F900156F19 /* ContactRepresentation.m */; };
 		361B5B291C26FCE800156F19 /* ContactsStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B281C26FCE800156F19 /* ContactsStorageTests.m */; };
+		361B5B2C1C270F1100156F19 /* ContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B2B1C270F1100156F19 /* ContactsViewController.m */; };
+		361B5B2F1C270F1C00156F19 /* AddContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B2E1C270F1C00156F19 /* AddContactViewController.m */; };
+		361B5B381C27133200156F19 /* PopupAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B331C27133200156F19 /* PopupAnimationController.m */; };
+		361B5B391C27133200156F19 /* PopupPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B351C27133200156F19 /* PopupPresentationController.m */; };
+		361B5B3A1C27133200156F19 /* PopupTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 361B5B371C27133200156F19 /* PopupTransitioningDelegate.m */; };
 		DF6EB3C43C67104AD4235AAA /* libPods-Contacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28235B116F2FB2528FE6012C /* libPods-Contacts.a */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +40,6 @@
 		361B5AEF1C26E7D200156F19 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		361B5AF11C26E7D200156F19 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		361B5AF21C26E7D200156F19 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		361B5AF41C26E7D200156F19 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		361B5AF51C26E7D200156F19 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		361B5AF81C26E7D200156F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		361B5AFA1C26E7D200156F19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		361B5AFD1C26E7D200156F19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,16 @@
 		361B5B1F1C26F3F900156F19 /* ContactRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactRepresentation.h; sourceTree = "<group>"; };
 		361B5B201C26F3F900156F19 /* ContactRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactRepresentation.m; sourceTree = "<group>"; };
 		361B5B281C26FCE800156F19 /* ContactsStorageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsStorageTests.m; sourceTree = "<group>"; };
+		361B5B2A1C270F1100156F19 /* ContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsViewController.h; sourceTree = "<group>"; };
+		361B5B2B1C270F1100156F19 /* ContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsViewController.m; sourceTree = "<group>"; };
+		361B5B2D1C270F1C00156F19 /* AddContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactViewController.h; sourceTree = "<group>"; };
+		361B5B2E1C270F1C00156F19 /* AddContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactViewController.m; sourceTree = "<group>"; };
+		361B5B321C27133200156F19 /* PopupAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupAnimationController.h; sourceTree = "<group>"; };
+		361B5B331C27133200156F19 /* PopupAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupAnimationController.m; sourceTree = "<group>"; };
+		361B5B341C27133200156F19 /* PopupPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupPresentationController.h; sourceTree = "<group>"; };
+		361B5B351C27133200156F19 /* PopupPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupPresentationController.m; sourceTree = "<group>"; };
+		361B5B361C27133200156F19 /* PopupTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupTransitioningDelegate.h; sourceTree = "<group>"; };
+		361B5B371C27133200156F19 /* PopupTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupTransitioningDelegate.m; sourceTree = "<group>"; };
 		AE21E01905DE70497A58201C /* Pods-Contacts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.release.xcconfig"; sourceTree = "<group>"; };
 		CD9261EB9EFBBA4811CDC625 /* Pods-Contacts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Contacts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Contacts/Pods-Contacts.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,10 +121,9 @@
 				361B5AF21C26E7D200156F19 /* AppDelegate.m */,
 				361B5B181C26EC8300156F19 /* Entities */,
 				361B5B131C26E97000156F19 /* Model */,
-				361B5B141C26E99200156F19 /* Scenes */,
-				361B5AF41C26E7D200156F19 /* ViewController.h */,
-				361B5AF51C26E7D200156F19 /* ViewController.m */,
 				361B5AF71C26E7D200156F19 /* Main.storyboard */,
+				361B5B141C26E99200156F19 /* Scenes */,
+				361B5B301C2712FD00156F19 /* Transitions */,
 				361B5AFA1C26E7D200156F19 /* Assets.xcassets */,
 				361B5AFC1C26E7D200156F19 /* LaunchScreen.storyboard */,
 				361B5AFF1C26E7D200156F19 /* Info.plist */,
@@ -152,6 +163,10 @@
 		361B5B141C26E99200156F19 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				361B5B2A1C270F1100156F19 /* ContactsViewController.h */,
+				361B5B2B1C270F1100156F19 /* ContactsViewController.m */,
+				361B5B2D1C270F1C00156F19 /* AddContactViewController.h */,
+				361B5B2E1C270F1C00156F19 /* AddContactViewController.m */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -163,6 +178,27 @@
 				361B5B1A1C26ED0A00156F19 /* Contact.m */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		361B5B301C2712FD00156F19 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				361B5B311C27133200156F19 /* Pop-up Transitions */,
+			);
+			name = Transitions;
+			sourceTree = "<group>";
+		};
+		361B5B311C27133200156F19 /* Pop-up Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				361B5B321C27133200156F19 /* PopupAnimationController.h */,
+				361B5B331C27133200156F19 /* PopupAnimationController.m */,
+				361B5B341C27133200156F19 /* PopupPresentationController.h */,
+				361B5B351C27133200156F19 /* PopupPresentationController.m */,
+				361B5B361C27133200156F19 /* PopupTransitioningDelegate.h */,
+				361B5B371C27133200156F19 /* PopupTransitioningDelegate.m */,
+			);
+			path = "Pop-up Transitions";
 			sourceTree = "<group>";
 		};
 		E225E3D544DD72A6DBCC137D /* Pods */ = {
@@ -325,12 +361,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				361B5AF61C26E7D200156F19 /* ViewController.m in Sources */,
+				361B5B2F1C270F1C00156F19 /* AddContactViewController.m in Sources */,
+				361B5B3A1C27133200156F19 /* PopupTransitioningDelegate.m in Sources */,
 				361B5AF31C26E7D200156F19 /* AppDelegate.m in Sources */,
 				361B5B1B1C26ED0A00156F19 /* Contact.m in Sources */,
+				361B5B2C1C270F1100156F19 /* ContactsViewController.m in Sources */,
 				361B5B211C26F3F900156F19 /* ContactRepresentation.m in Sources */,
+				361B5B381C27133200156F19 /* PopupAnimationController.m in Sources */,
 				361B5B1E1C26ED3500156F19 /* ContactsStorage.m in Sources */,
 				361B5AF01C26E7D200156F19 /* main.m in Sources */,
+				361B5B391C27133200156F19 /* PopupPresentationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

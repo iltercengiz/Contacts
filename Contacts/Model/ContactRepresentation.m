@@ -18,6 +18,8 @@
 
 @implementation ContactRepresentation
 
+@dynamic fullName;
+
 - (instancetype)init {
     return [self initWithContact:nil];
 }
@@ -50,6 +52,10 @@
         return NO;
     }
     return [util isValidNumber:phoneNumber];
+}
+
+- (NSString *)fullName {
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
 }
 
 @end
